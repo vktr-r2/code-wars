@@ -10,41 +10,41 @@
 
 //FIRST IMPLEMENTATION
 
-// const createPhoneNumber = (digits) => {
-//   //Declare variables
-//   let areaCode = [];
-//   let phoneNumberFront = [];
-//   let phoneNumberBack = [];
+const createPhoneNumber = (digits) => {
+  //Declare variables
+  let areaCode = [];
+  let phoneNumberFront = [];
+  let phoneNumberBack = [];
 
-//   //Check if 10 digits were passed
-//   if (digits.length !== 10) {
-//     console.log("Please enter 10 digits");
-//   }
-//   //If 10 digits passed, slice phone number pieces
-//   if (digits.length === 10) {
-//     areaCode = digits.slice(0, 3);
-//     phoneNumberFront = digits.slice(3, 6);
-//     phoneNumberBack = digits.slice(6, 10);
-//   }
+  //Check if 10 digits were passed
+  if (digits.length !== 10) {
+    console.log("Please enter 10 digits");
+  }
+  //If 10 digits passed, slice phone number pieces
+  if (digits.length === 10) {
+    areaCode = digits.slice(0, 3);
+    phoneNumberFront = digits.slice(3, 6);
+    phoneNumberBack = digits.slice(6, 10);
+  }
 
-//   //Transform arrays into strings
-//   areaCode = areaCode.join('');
-//   phoneNumberFront = phoneNumberFront.join('');
-//   phoneNumberBack = phoneNumberBack.join('');
+  //Transform arrays into strings
+  areaCode = areaCode.join('');
+  phoneNumberFront = phoneNumberFront.join('');
+  phoneNumberBack = phoneNumberBack.join('');
 
-//   //Return template literal string
-//   return `(${areaCode}) ${phoneNumberFront}-${phoneNumberBack}`;
-// };
+  //Return template literal string
+  return `(${areaCode}) ${phoneNumberFront}-${phoneNumberBack}`;
+};
 
 //REFACTORED IMPLEMENTATION
 
-const createPhoneNumber = (digits) => {
+// const createPhoneNumber = (digits) => {
 
-  // Use template literals to slice phone number pieces and transform them into string
-  const phoneNumber = `(${digits.slice(0, 3).join("")}) ${digits.slice(3, 6).join("")}-${digits.slice(6, 10).join("")}`;
+//   // Use template literals to slice phone number pieces and transform them into string
+//   const phoneNumber = `(${digits.slice(0, 3).join("")}) ${digits.slice(3, 6).join("")}-${digits.slice(6, 10).join("")}`;
 
-  // Return phoneNumber
-  return phoneNumber;
-};
+//   // Return phoneNumber
+//   return phoneNumber;
+// };
 
 console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
