@@ -8,7 +8,6 @@
 
 // If v1 >= v2 then return nil, nothing, null, None or {-1, -1, -1} for C++, C, Go, Nim, Pascal, COBOL, Erlang, [-1, -1, -1] for Perl,[] for Kotlin or "-1 -1 -1" for others.
 
-
 // Examples:
 // (form of the result depends on the language)
 
@@ -24,3 +23,43 @@
 // Tortoises don't care about fractions of seconds
 // Think of calculation by hand using only integers (in your code use or simulate integer division)
 // or Google: "convert decimal time to hours minutes seconds"
+
+const race = (tortoiseA, tortoiseB, lead) => {
+
+  //If tortoiseA is the faster tortoise return null and exit function
+  if (tortoiseA > tortoiseB) {
+    return null;
+  }
+
+  //Determine feet per second speeds
+  let tortAPerSec = tortoiseA / 3600;
+  let tortBPerSec = tortoiseB / 3600;
+  //Start tortoiseA at lead distance, and tortoiseB at 0
+  let tortoiseADistance = lead;
+  let tortoiseBDistance = 0;
+  //Start timer at -1, so first loop begins timer at 0 to start race
+  let timer = -1;
+
+  //While loop checks distance of each tortoise after each second
+  while (tortoiseADistance > tortoiseBDistance) {
+    //Increment tortoises by their feet per second speed
+    tortoiseADistance += tortAPerSec;
+    tortoiseBDistance += tortBPerSec;
+    //Increment timer by 1 second
+    timer++;
+  }
+
+  return convertSecondsToTime(timer);
+};
+
+//Helper function assists in formatting timer from seconds to [hours, minutes, seconds]
+function convertSecondsToTime(totalSeconds) {
+  var hours = Math.floor(totalSeconds / 3600); // 1 hour = 3600 seconds
+  var minutes = Math.floor((totalSeconds % 3600) / 60); // 1 minute = 60 seconds
+  var seconds = Math.floor(totalSeconds % 60);
+
+  return [hours, minutes, seconds];
+}
+
+//TEST EXPECTED : 0h, 17m, 4 sec
+console.log(race(720, 850, 37));
