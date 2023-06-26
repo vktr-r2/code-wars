@@ -24,42 +24,62 @@
 // Think of calculation by hand using only integers (in your code use or simulate integer division)
 // or Google: "convert decimal time to hours minutes seconds"
 
+//FIRST IMPLEMENTATION
+
+// const race = (tortoiseA, tortoiseB, lead) => {
+//   //If tortoiseA is the faster tortoise return null and exit function
+//   if (tortoiseA > tortoiseB) {
+//     return null;
+//   }
+
+//   //Determine feet per second speeds
+//   let tortAPerSec = tortoiseA / 3600;
+//   let tortBPerSec = tortoiseB / 3600;
+//   //Start tortoiseA at lead distance, and tortoiseB at 0
+//   let tortoiseADistance = lead;
+//   let tortoiseBDistance = 0;
+//   //Start timer at -1, so first loop begins timer at 0 to start race
+//   let timer = -1;
+
+//   //While loop checks distance of each tortoise after each second
+//   while (tortoiseADistance > tortoiseBDistance) {
+//     //Increment tortoises by their feet per second speed
+//     tortoiseADistance += tortAPerSec;
+//     tortoiseBDistance += tortBPerSec;
+//     //Increment timer by 1 second
+//     timer++;
+//   }
+
+//   return convertSecondsToTime(timer);
+// };
+
+// //Helper function assists in formatting timer from seconds to [hours, minutes, seconds]
+// function convertSecondsToTime(totalSeconds) {
+//   var hours = Math.floor(totalSeconds / 3600); // 1 hour = 3600 seconds
+//   var minutes = Math.floor((totalSeconds % 3600) / 60); // 1 minute = 60 seconds
+//   var seconds = Math.floor(totalSeconds % 60);
+
+//   return [hours, minutes, seconds];
+// }
+
+//REFACTORED IMPLEMENTATION
+
 const race = (tortoiseA, tortoiseB, lead) => {
-
   //If tortoiseA is the faster tortoise return null and exit function
-  if (tortoiseA > tortoiseB) {
-    return null;
-  }
-
-  //Determine feet per second speeds
-  let tortAPerSec = tortoiseA / 3600;
-  let tortBPerSec = tortoiseB / 3600;
-  //Start tortoiseA at lead distance, and tortoiseB at 0
-  let tortoiseADistance = lead;
-  let tortoiseBDistance = 0;
-  //Start timer at -1, so first loop begins timer at 0 to start race
-  let timer = -1;
-
-  //While loop checks distance of each tortoise after each second
-  while (tortoiseADistance > tortoiseBDistance) {
-    //Increment tortoises by their feet per second speed
-    tortoiseADistance += tortAPerSec;
-    tortoiseBDistance += tortBPerSec;
-    //Increment timer by 1 second
-    timer++;
-  }
-
-  return convertSecondsToTime(timer);
+  if (tortoiseA > tortoiseB) { return null; }
+  
+  //Calculate totalSeconds based on lead and difference in tortoise speeds
+  const totalSeconds = Math.floor(lead / (tortoiseB - tortoiseA) * 3600);
+  //Calculate hours, mins, secs
+  const hours = Math.floor(totalSeconds / 3600);
+  const mins = Math.floor((totalSeconds - hours * 3600) / 60);
+  const secs = totalSeconds - hours * 3600 - mins * 60;
+  
+  //Return result
+  return [hours, mins, secs];
 };
 
-//Helper function assists in formatting timer from seconds to [hours, minutes, seconds]
-function convertSecondsToTime(totalSeconds) {
-  var hours = Math.floor(totalSeconds / 3600); // 1 hour = 3600 seconds
-  var minutes = Math.floor((totalSeconds % 3600) / 60); // 1 minute = 60 seconds
-  var seconds = Math.floor(totalSeconds % 60);
 
-  return [hours, minutes, seconds];
-}
+//TEST EXPECTED RESULT: 0h, 17m, 4 sec
 
-//TEST EXPECTED : 0h, 17m, 4 sec
 console.log(race(720, 850, 37));
