@@ -5,17 +5,21 @@
 // Note: If the number is a multiple of both 3 and 5, only count it once.
 
 const solution = (num) => {
+  //Check that arg passed is legitimate
   if (num < 0) {
     return 0;
   }
-
+  //Declare array to store numbers to be summed
   multiples = [];
-
+  //For loop to iterate through range of numbers
   for (i = 0; i < num; i++) {
+    //Check if current value of i is multiple of 3 or 5
     if (i % 3 === 0 || i % 5 === 0) {
+      //If true, push i into multiples array
       multiples.push(i);
     }
   }
+  //Return sum of multiples array using reduce
   return multiples.reduce((prev, current) => {
     return prev + current;
   });
