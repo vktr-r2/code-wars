@@ -9,20 +9,19 @@ const solution = (num) => {
   if (num < 0) {
     return 0;
   }
-  //Declare array to store numbers to be summed
-  multiples = [];
+
+  //Declare sum variable
+  let sum = 0;
+
   //For loop to iterate through range of numbers
   for (i = 0; i < num; i++) {
     //Check if current value of i is multiple of 3 or 5
     if (i % 3 === 0 || i % 5 === 0) {
-      //If true, push i into multiples array
-      multiples.push(i);
+      //If true, add i to current sum value
+      sum += i;
     }
   }
-  //Return sum of multiples array using reduce
-  return multiples.reduce((prev, current) => {
-    return prev + current;
-  });
+  return sum;
 };
 
 console.log(solution(10));

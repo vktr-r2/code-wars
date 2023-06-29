@@ -6,19 +6,18 @@
 
 
 def solution(num)
-  #Declare array to store numbers to be summed
-  multiples = []
+  #Declare variable to store sum
+  sum = 0
 
   #Setup range from 1 to num-1 to be checked
   1.upto(num - 1) do |i|
     #Conditional to check if current number is multiple of 3 or 5
     if i % 3 == 0 || i % 5 == 0
       #If true, push number into multiples array
-      multiples.push(i)
+      sum += i
     end
   end
-  #Return sum of multiples array using reduce
-  multiples.reduce(0) { |sum, num| sum + num }
+  sum
 end
 
 puts solution(10)
