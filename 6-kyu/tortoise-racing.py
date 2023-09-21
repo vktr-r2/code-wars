@@ -25,3 +25,17 @@
 // Think of calculation by hand using only integers (in your code use or simulate integer division)
 // or Google: "convert decimal time to hours minutes seconds"
 """
+import math
+
+def race(v1, v2, g):
+
+  if v1 > v2:
+    return None
+  
+  total_seconds = math.floor(g / (v2 - v1) * 3600)
+
+  hours = math.floor(total_seconds / 3600)
+  mins = math.floor((total_seconds - hours * 3600) / 60)
+  secs = total_seconds - hours * 3600 - mins * 60
+
+  return [hours, mins, secs]
