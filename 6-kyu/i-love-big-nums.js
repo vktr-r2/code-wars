@@ -11,6 +11,15 @@ The results will be large so make sure to return a string.
 
 */
 
+/*
+NOTES
+
+- .every() method tests whether all elements in array pass the test implemented by provided callback
+- .map(String) method converts all numbers to a string for lexigraphical comparison
+- localeCompare() method of String values returns a number indicating whether this string comes before, or after, or is the same as the given string in sort order.
+
+*/
+
 
 // MY SOLUTION
 function biggest(nums) {
@@ -28,7 +37,7 @@ function biggest(nums) {
     const ab = a + b;
     const ba = b + a;
 
-    // localeCompare method is used to compare two strings lexicographically
+    // localeCompare method compares strings lexicographically
     return ba.localeCompare(ab);
   });
 
