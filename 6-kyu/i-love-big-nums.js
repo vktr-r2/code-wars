@@ -29,7 +29,7 @@ function biggest(nums) {
     return '0';
   }
 
-  // Convert numbers to strings for easy comparison
+  // Convert numbers to strings for lexicographical comparison
   const strNums = nums.map(String);
   
   // Custom sort the array
@@ -41,6 +41,6 @@ function biggest(nums) {
     return ba.localeCompare(ab);
   });
 
-  // Join the sorted strings to form the biggest number and return it
+  // Concat sorted strings
   return strNums.join('');
 };
