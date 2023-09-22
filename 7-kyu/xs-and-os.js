@@ -13,6 +13,8 @@ XO("zzoo") => false
 
 */
 
+/*  MY ORIGINAL SOLUTION
+
 function XO(str) {
   let x = 0;
   let o = 0;
@@ -27,4 +29,17 @@ function XO(str) {
     }
   }
   return x === o;
+}
+*/
+
+// BETTER SOLUTION
+function XO(str) {
+
+  // .match function returns ARRAY of matches
+  // /x/gi is regex > looks for 'x's, g is global flag (checks whole string), i is case-insensitive flag
+  let x = str.match(/x/gi);
+  let o = str.match(/o/gi);
+
+  // Check if x length is equal to o length
+  return (x && x.length) === (o && o.length);
 }
