@@ -13,6 +13,10 @@ XO("zzoo") => false
 
 """
 
+
+"""
+MY ORIGINAL SOLUTION
+
 # Import regular expression module
 import re
 
@@ -25,3 +29,9 @@ def XO(s):
 
     # Compares the lengths of the lists x and o to see if they're equal,
     return len(x) == len(o)
+"""
+
+# BETTER SOLUTION
+def xo(s):
+    s = s.lower()
+    return s.count('x') == s.count('o')
