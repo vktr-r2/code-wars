@@ -14,3 +14,7 @@ Examples
 2000 --> 20
 
 """
+import math
+
+def century(year):
+    return math.ceil(year / 100)
