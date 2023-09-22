@@ -10,6 +10,24 @@ The results will be large so make sure to return a string.
 
 """
 
+"""
+Python's built-in sort method prefers to use a key function to determine the sort order, 
+which is a bit different from JavaScript's comparator function.
+
+cmp_to_key: This is a utility function from the functools module. 
+It converts a traditional comparator function to a key function that Python's sort can use.
+
+SO 'str_nums.sort(key=cmp_to_key(custom_compare), reverse=True)' ENDS UP WORKING IN THESE STEPS
+
+1. cmp_to_key(custom_compare) converts custom_compare into a key function.
+
+2. str_nums.sort() calls this key function, behind the scenes, 
+to compare each pair of elements in the array and decide their order.
+
+3. The reverse=True parameter ensures that the largest possible concatenation comes first, 
+effectively building the largest number from the elements.
+
+"""
 
 from functools import cmp_to_key
 
