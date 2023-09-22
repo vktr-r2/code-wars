@@ -12,3 +12,16 @@ XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
 XO("zzoo") => false
 
 """
+
+# Import regular expression module
+import re
+
+
+def XO(s):
+    
+    # Searches for all occurrences of "x" in the string s, case-insensitively. 
+    x = re.findall(r'x', s, re.IGNORECASE)
+    o = re.findall(r'o', s, re.IGNORECASE)
+
+    # Compares the lengths of the lists x and o to see if they're equal,
+    return len(x) == len(o)
