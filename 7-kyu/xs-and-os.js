@@ -13,6 +13,18 @@ XO("zzoo") => false
 
 */
 
-function xsAndOs(str) {
-    
+function XO(str) {
+  let x = 0;
+  let o = 0;
+  str = str.toUpperCase();
+
+  for (let char of str) {
+    if (char === "X") {
+      x += 1;
+    }
+    if (char === "O") {
+      o += 1;
+    }
+  }
+  return x === o;
 }
