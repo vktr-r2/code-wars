@@ -12,7 +12,7 @@ Examples
 [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
 
 */
-
+// MY SOLUTION
 function findOdd(A) {
   // object to count each numbers occurrance
   const counter = {};
@@ -33,3 +33,22 @@ function findOdd(A) {
     }
   }
 }
+
+
+/* MORE EFFICIENT SOLUTION
+
+The code defines a function findOdd that takes an array xs as its argument. 
+The function uses the reduce method to apply the bitwise XOR (^) operation 
+on all elements of the array.
+
+In the context of an array containing integers, the XOR operation 
+will essentially cancel out numbers that appear an even number of 
+times, leaving only the number that appears an odd number of times. 
+This is because XORing a number with itself results in 0, and XORing 
+any number with 0 results in the number itself.
+
+*/
+
+const findOdd = (A) => A.reduce((a, b) => a ^ b);
+
+
