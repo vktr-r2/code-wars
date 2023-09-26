@@ -36,3 +36,17 @@ def find_it(seq):
     for key in counter:
         if counter[key] % 2 != 0:
             return key
+        
+
+
+# CLEANER SOLUTION 
+from collections import Counter
+
+def find_it(seq):
+    counter = Counter(seq)
+    for key, value in counter.items():
+        if value % 2 != 0:
+            return key
+        
+# This version essentially does the same thing but leverages Python's standard collections library for cleaner code. 
+# The time and space complexity remain 
