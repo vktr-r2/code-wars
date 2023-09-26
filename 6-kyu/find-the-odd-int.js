@@ -14,6 +14,22 @@ Examples
 */
 
 function findOdd(A) {
-  //happy coding!
-  return 0;
+  // object to count each numbers occurrance
+  const counter = {};
+
+  // count how many times each element occurs in array
+  A.forEach((ele) => {
+    if (counter[ele]) {
+      counter[ele] += 1;
+    } else {
+      counter[ele] = 1;
+    }
+  });
+
+  // iterate through counter obj and return Number(key) that is odd
+  for (key in counter) {
+    if (counter[key] % 2 !== 0) {
+      return Number(key);
+    }
+  }
 }
