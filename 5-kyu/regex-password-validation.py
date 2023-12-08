@@ -11,4 +11,4 @@ only contains alphanumeric characters (note that '_' is not alphanumeric)
 
 """
 
-regex=""
+regex="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[0-9a-zA-Z]{6,}$"
