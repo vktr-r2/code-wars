@@ -29,9 +29,15 @@ Good luck and may you find GOOOLD!
 """
 
 
-class Ship:
-    def __init__(self, draft, crew):
+class Ship:                                                         # define Ship class
+    def __init__(self, draft, crew):                                # initalize class with draft and crew variables
         self.draft = draft
         self.crew = crew
     def is_worth_it(self):                                          # define method is_worth_it and pass self from object
         return self.draft - (self.crew * 1.5) > 20                  # return expression evaluation
+    
+row_boat = Ship(4, 2)                                               # initialize an instance of the Ship class in row_boat variable - pass draft and crew args to setup instance
+print(row_boat.is_worth_it())                                       # call is_worth_it method on row_boat object
+
+black_pearl = Ship(100, 30)
+print(black_pearl.is_worth_it())
