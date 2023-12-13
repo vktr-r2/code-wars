@@ -37,7 +37,8 @@ class Quark:
         valid_colors = ("red", "blue", "green")                                             # Define tuples storing acceptable property values
         valid_flavors=("up", "down", "strange", "charm", "top", "bottom")
 
-        if color in valid_colors and flavor in valid_flavors:                               # Check that Quark instance initialized with proper values.  If true...
+        if color not in valid_colors or flavor not in valid_flavors:                        # Check that Quark instance initialized with proper values.  If true...
+            raise ValueError("Invalid color or flavor for Quark.")
 
             self.color = color                                                              # Define values based on arguments passed
             self.flavor = flavor
@@ -49,4 +50,11 @@ class Quark:
         self.color = temp_color_var
 
 
+example_quark = Quark("blue", "up")
+print(example_quark)
 
+invalid_quark = Quark("pink", "random")
+print(invalid_quark)
+print(invalid_quark.color)
+print(invalid_quark.flavor)
+print(invalid_quark.baryon_number)
