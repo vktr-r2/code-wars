@@ -23,5 +23,19 @@ As a complete example, color_probability('red', 'bumpy') should return the strin
 
 """
 
+def format_probability_value(num):
+    value = str(num)[0:3]
+    return value
+
 def color_probability(color, texture):
-    pass
+    
+    if texture == "smooth": 
+        return format_probability_value(1/3)
+
+    if color == "red":
+        return format_probability_value(4/7)
+    elif color == "yellow":
+        return format_probability_value(2/7)
+    else:
+        return format_probability_value(1/7)
+        
