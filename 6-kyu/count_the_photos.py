@@ -20,4 +20,34 @@ For ".><.>>.<<" -> 11 photos were taken
 # it should return an integer
 
 def count_photos(road):
-    pass
+    tally = 0
+    i = 0
+    limit = len(road) - 1
+
+    while i <= limit:
+        if road[i] == ">":
+            right_limit = limit
+            right_i = i
+
+            while right_i <= right_limit:
+                if road[right_i] == ".":
+                    tally += 1
+                    
+                right_i += 1
+
+        if road[i] == "<":
+            left_i = i
+
+            while left_i >= 0:
+                if road[left_i] == ".":
+                    tally += 1
+                left_i -= 1
+
+        i += 1
+
+    return tally
+
+print(count_photos(".><.>>.<<"))
+print(count_photos(">.<."))
+print(count_photos(".>>"))
+print(count_photos(">>."))
