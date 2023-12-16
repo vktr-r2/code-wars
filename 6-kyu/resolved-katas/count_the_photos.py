@@ -20,30 +20,18 @@ For ".><.>>.<<" -> 11 photos were taken
 # it should return an integer
 
 def count_photos(road):
-    tally = 0
-    i = 0
-    limit = len(road) - 1
+    tally = 0                                           # tally to be returned
+    i = 0                                               # i to increment each iteration
+    limit = len(road) - 1                               # limit to end loop set to length - 1
 
     while i <= limit:
-        if road[i] == ">":
-            right_limit = limit
-            right_i = i
+        if road[i] == ">":                              # if char at index i is ">"
+            tally += road.count(".", i)                 # increase the tally by the number of "." found between index i and end of string (end arg not manditory, assumed by count() function to be end of string)
 
-            while right_i <= right_limit:
-                if road[right_i] == ".":
-                    tally += 1
-                    
-                right_i += 1
-
-        if road[i] == "<":
-            left_i = i
-
-            while left_i >= 0:
-                if road[left_i] == ".":
-                    tally += 1
-                left_i -= 1
-
-        i += 1
+        if road[i] == "<":                              # if char at index i is "<"
+            tally += road.count(".", 0,  i)             # increase the tally by the number of "." between start of string and road[i]
+          
+        i += 1                                          # increment i and loop again
 
     return tally
 
