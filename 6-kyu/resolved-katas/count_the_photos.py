@@ -14,10 +14,14 @@ For ">>." -> 2 photos were taken
 For ".>>" -> 0 photos were taken
 For ">.<." -> 3 photos were taken
 For ".><.>>.<<" -> 11 photos were taken
+
+return the total number of photos.
+it should return an integer
 """
 
-# return the total number of photos.
-# it should return an integer
+# FUNCTION WORKS, BUT INEFFICIENT
+# O(N^2) complexity, did not pass the kata quick enough
+# Function using nested loops to iterate over string many times, would be very slow with large string arguments
 
 def count_photos(road):
     tally = 0                                           # tally to be returned
@@ -34,6 +38,26 @@ def count_photos(road):
         i += 1                                          # increment i and loop again
 
     return tally
+
+
+# FUNCTION WORKS EFFICIENTLY
+# O(n) complexity
+# This function only needs to iterate through string once
+
+def count_photos(road):
+    total_cameras = road.count('.')                        # Determine how many cameras string has
+    cameras_seen = 0                                       # Var will increment as we iterate through the string character by character
+    photos_taken = 0                                       # Return value
+
+    for char in road:                                      # Start first and only interation through string
+        if char == '>':                                    # If char is car going right: 
+            photos_taken += total_cameras - cameras_seen        # Add to photos_taken the number of total camera minus the cameras already seen/passed
+        elif char == '.':                                  # If char is a camera:
+            cameras_seen += 1                                   # Increment cameras_seen
+        elif char == '<':                                  # If char is a camera going left:
+            photos_taken += cameras_seen                        # Add to photos_taken the number of cameras seen/passed thus far.
+
+    return photos_taken
 
 print(count_photos(".><.>>.<<"))
 print(count_photos(">.<."))
