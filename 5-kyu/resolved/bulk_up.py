@@ -35,9 +35,6 @@ food = {
 
 def bulk(arr):
 
-    # Dict to keep track of weight of each ingredient eaten
-    daily_food = {}
-
     # Variables to track nutritional metrics
     protein = 0
     carbs = 0
@@ -58,21 +55,19 @@ def bulk(arr):
             # Assign first split to weight, second split to name
             weight, name = ingred.strip().split(' ', 1)
 
-            # Check current value for daily_food[name] using .get
-            # If key doesn't exist return 0
             # Take weight string, remove last character 'g' and convert to int
             # Divide int by 100 (since nutrition will be measured per 100gs)
-            # Add new weight value to value returned by .get() method
-            daily_food[name] = daily_food.get(name, 0) + int(weight[:-1]) / 100
+            weight = int(weight[:-1]) / 100
 
-    # .items makes an iterable list of key:value pairs
-    for ingred, weight in daily_food.items():
-        # tally nutritional values based on data provided in food dictionary
-        protein += food[ingred][0] * weight
-        carbs += food[ingred][1] * weight
-        fat += food[ingred][2] * weight
+            if name in food:
+                nutrient_values = food[name]
+                protein += nutrient_values[0] * weight
+                carbs += nutrient_values[1] * weight
+                fat += nutrient_values[2] * weight
+
     # calculate calories
     calories += ((protein + carbs) * 4) + (fat * 9)
 
     # Use format function with '.7g' flag to return int/float 7 digits or less
-    return f"Total proteins: {format(protein, '.6g')} grams, Total calories: {format(calories, '.6g')}"
+    return (f"Total proteins: {format(protein, '.7g')} grams, "
+            f"Total calories: {format(calories, '.7g')}")
