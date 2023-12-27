@@ -23,21 +23,21 @@ it should return an integer
 # O(N^2) complexity, did not pass the kata quick enough
 # Function using nested loops to iterate over string many times, would be very slow with large string arguments
 
-def count_photos(road):
-    tally = 0                                           # tally to be returned
-    i = 0                                               # i to increment each iteration
-    limit = len(road) - 1                               # limit to end loop set to length - 1
+# def count_photos(road):
+#     tally = 0                                           # tally to be returned
+#     i = 0                                               # i to increment each iteration
+#     limit = len(road) - 1                               # limit to end loop set to length - 1
 
-    while i <= limit:
-        if road[i] == ">":                              # if char at index i is ">"
-            tally += road.count(".", i)                 # increase the tally by the number of "." found between index i and end of string (end arg not manditory, assumed by count() function to be end of string)
+#     while i <= limit:
+#         if road[i] == ">":                              # if char at index i is ">"
+#             tally += road.count(".", i)                 # increase the tally by the number of "." found between index i and end of string (end arg not manditory, assumed by count() function to be end of string)
 
-        if road[i] == "<":                              # if char at index i is "<"
-            tally += road.count(".", 0,  i)             # increase the tally by the number of "." between start of string and road[i]
+#         if road[i] == "<":                              # if char at index i is "<"
+#             tally += road.count(".", 0,  i)             # increase the tally by the number of "." between start of string and road[i]
           
-        i += 1                                          # increment i and loop again
+#         i += 1                                          # increment i and loop again
 
-    return tally
+#     return tally
 
 
 # FUNCTION WORKS EFFICIENTLY
