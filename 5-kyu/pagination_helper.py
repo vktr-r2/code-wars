@@ -23,6 +23,25 @@ helper.page_index(20) # should == -1
 helper.page_index(-10) # should == -1 because negative indexes are invalid
 
 """
+import math
+
+
+class PaginationHelper:
+
+    # The constructor takes in an array of items and an integer indicating
+    # how many items fit within a single page
+    def __init__(self, collection, items_per_page):
+        self.collection = collection
+        self.items_per_page = items_per_page
+
+    # returns the number of items within the entire collection
+    def item_count(self):
+        return len(self.collection)
+
+    # returns the number of pages
+    def page_count(self):
+        return math.ceil(len(self.collection) / self.items_per_page)
+
 
 
 
