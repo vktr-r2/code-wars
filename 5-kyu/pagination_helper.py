@@ -59,31 +59,27 @@ class PaginationHelper:
 
         return end_index - start_index
 
-
     # determines what page item at given index is on. Zero based indexes.
     # this method should return -1 for item_index values that are out of range
     def page_index(self, item_index):
         collection_length = len(self.collection)
 
-        if item_index < 0 or item_index > collection_length or collection_length == 0:
+        if item_index < 0 or item_index + 1 > collection_length or collection_length == 0:
             return -1
         else:
-            return math.ceil((item_index - 1) / self.items_per_page)
+            return item_index // self.items_per_page
 
 
-# helper = PaginationHelper(['a', 'b', 'c', 'd', 'e', 'f'], 4)
+helper = PaginationHelper(['a', 'b', 'c', 'd', 'e', 'f'], 4)
 
-# print(helper.page_count())                                      # should == 2
-# print(helper.item_count())                                      # should == 6
+print(helper.page_count())                                      # should == 2
+print(helper.item_count())                                      # should == 6
 
-# print(helper.page_item_count(0))    # should == 4
-# print(helper.page_item_count(1))    # last page - should == 2
-# print(helper.page_item_count(2))    # should == -1 since the page is invalid
+print(helper.page_item_count(0))    # should == 4
+print(helper.page_item_count(1))    # last page - should == 2
+print(helper.page_item_count(2))    # should == -1 since the page is invalid
 
-# print(helper.page_index(5))     # should == 1 (zero based index)
-# print(helper.page_index(2))     # should == 0
-# print(helper.page_index(20))    # should == -1
-# print(helper.page_index(-10))   # should == -1 (negative indexes are invalid)
-
-helper = PaginationHelper(['a', 'b', 'c', 'd'], 1)
-print(helper.page_item_count(3))
+print(helper.page_index(5))     # should == 1 (zero based index)
+print(helper.page_index(2))     # should == 0
+print(helper.page_index(20))    # should == -1
+print(helper.page_index(-10))   # should == -1 (negative indexes are invalid)
