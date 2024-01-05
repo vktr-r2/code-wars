@@ -47,19 +47,18 @@ class PaginationHelper:
 # returns the number of items on the given page. page_index is zero based
     # this method should return -1 for page_index values that are out of range
     def page_item_count(self, page_index):
-        total_pages = self.page_count()
+        if page_index < 0 or page_index >= self.page_count():
+            return -1  # Page index out of range
 
-        if page_index < 0 or page_index > total_pages - 1:
-            return -1
-        elif page_index == 0:
-            return self.items_per_page
-        elif page_index + 1 == total_pages:
-            if self.item_count() % self.items_per_page == 0:
-                return self.items_per_page
-            else:
-                return self.item_count() % self.items_per_page
-        else:
-            return self.items_per_page
+    # Calculate start index of the page
+        start_index = page_index * self.items_per_page
+        end_index = start_index + self.items_per_page
+
+    # Adjust end index for the last page
+        end_index = min(end_index, self.item_count())
+
+        return end_index - start_index
+
 
     # determines what page item at given index is on. Zero based indexes.
     # this method should return -1 for item_index values that are out of range
