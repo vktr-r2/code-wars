@@ -22,5 +22,3 @@ def quicksort(arr):
         # return a combined list of "less" + original first element + "greater"
         # call recursively until length of less or greater lists is 1 or less
         return quicksort(list(less)) + [p] + quicksort(list(greater))
-
-
