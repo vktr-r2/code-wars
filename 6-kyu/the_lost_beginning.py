@@ -15,7 +15,21 @@ Given a sequence of one or more consecutive natural numbers concatenated into a 
 0 < smallest number < 1 000 000 000
 
 """
+import math
 
 
 def find(s):
-    pass
+
+    decrement = math.floor(len(s) / 2) - 3  # < BuG TESTING
+    print(decrement)
+    while decrement >= 0:
+        if int(s[0:decrement]) - int(s[decrement:((decrement * 2))]) == -1:
+            return int(s[0:decrement])
+      
+        decrement -= 1
+        print(decrement)
+
+    return "Logic broken"
+
+
+print(find("72637236"))
