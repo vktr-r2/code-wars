@@ -22,15 +22,21 @@ In the first case (look below) the most candies are given to second kid (i.e sec
 """
 
 
-def candies(lst):
-    if len(lst) < 2:
+# def candies(lst):
+#     if len(lst) < 2:
+#         return -1
+
+#     most_candies = max(lst)
+#     candies_given = 0
+
+#     for kid in lst:
+#         candies_given += most_candies - kid
+
+#     return candies_given
+
+
+# Reiteration returns the length of list multiplied by maximum value, then subtract the sum of all values
+def candies(s):
+    if len(s) < 1:
         return -1
-
-    most_candies = max(lst)
-    candies_given = 0
-
-    for kid in lst:
-        candies_given += most_candies - kid
-
-    return candies_given
-
+    return len(s) * max(s) - sum(s)
