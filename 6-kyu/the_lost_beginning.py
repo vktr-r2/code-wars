@@ -20,10 +20,10 @@ import math
 
 def find(s):
 
-    decrement = math.floor(len(s) / 2) - 3  # < BuG TESTING
+    decrement = math.floor(len(s) / 2) - 3  # < BuG TESTING.
     print(decrement)
     while decrement >= 0:
-        if int(s[0:decrement]) - int(s[decrement:((decrement * 2))]) == -1:
+        if int(s[0:decrement]) - int(s[decrement:((decrement * 2))]) == -1:  # What if we slice from the back
             return int(s[0:decrement])
       
         decrement -= 1
