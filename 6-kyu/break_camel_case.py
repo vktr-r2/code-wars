@@ -24,13 +24,15 @@ Example
 def solution(s):
 
     uppercase_indicies = []
+    tally = 0
 
     for index, char in enumerate(s):
         if char.isupper():
             uppercase_indicies.append(index)
 
     for index in uppercase_indicies:
-        s = s[:index] + " " + s[index:]
+        s = s[:index + tally] + " " + s[index + tally:]
+        tally += 1
 
     return s
 
