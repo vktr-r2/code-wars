@@ -31,21 +31,73 @@ class Warrior():
         self.health = 100
         # default guard is "", that is unguarded
         self.block = ""
+        self.deceased = False
+        self.zombie = False
 
     def attack(self, enemy, position):
         # attacking high deals 10 damage, low 5
         # 0 damage if the enemy blocks in the same position
-        if enemy.block != position: damage += 10 if position == Position['high'] else 5
+        self.damage = 0
+
+        if position != enemy.block:
+            if position == Position['high']:
+                self.damage += 10
+            else:
+                self.damage += 5
+
         # and even more damage if the enemy is not blocking at all
-        if enemy.block == "": damage += 5
-        enemy.set_health(enemy.health - damage)
+        if enemy.block == "":
+            self.damage += 5
+
+        enemy.set_health(enemy.health - self.damage)
 
     def set_health(self, new_health):
         # health cannot have negative values
-        self.health = min(0, new_health)
-        # if a warrior is set to 0 health he is dead
+        self.health = max(0, new_health)
+        # he would be a zombie only if he was already dead
+        if self.deceased:
+            self.zombie = True
+
         if self.health == 0:
             self.deceased = True
-            self.zombie = False
-        # he would be a zombie only if he was already dead
-        if self.deceased: self.zombie = True
+
+        # if a warrior is set to 0 health he is dead
+
+
+ninja = Warrior('Hanzo Hattori')
+samurai = Warrior('Ryōma Sakamoto')
+
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+
+print(samurai.health)
+
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+
+print(samurai.health)
+print(samurai.deceased)
+print(samurai.zombie)
+
+samurai.block = 'l'
+ninja.attack(samurai, 'h')
+
+print(samurai.health)
+print(samurai.deceased)
+print(samurai.zombie)
