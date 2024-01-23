@@ -16,25 +16,32 @@ Given a sequence of one or more consecutive natural numbers concatenated into a 
 
 """
 
+# DOUBLE LOOP (ITERATE FROM FRONT)
+
 
 def find(s):
     # Length of the string
     length = len(s)
 
+    # Setup range of numbers from 1 to the floor of length / 2 , add 1
     for i in range(1, length // 2 + 1):
-        # Starting number
+        # Starting number takes characters at index 0 to 1
         start_num = int(s[:i])
+        # Number = start_num
         num = start_num
 
-        # Generate consecutive number string
+        # Define a test string variable
         generated = ''
+        # While the length of my generated test string is less than the length of 's' argument string
         while len(generated) < length:
+            # Over and over add num + 1 to the string
             generated += str(num)
             num += 1
 
-        # Check if the generated string matches the input string
+        # Check if the test string matches 's' argument string
         if generated == s:
+            # if true, return the original starting number
             return start_num
 
-    # If no consecutive sequence found, return the entire string as a number
+    # If no consecutive sequence found, return the entire string as a single number
     return int(s)
