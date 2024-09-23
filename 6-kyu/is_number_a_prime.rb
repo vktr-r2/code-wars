@@ -9,6 +9,12 @@ You can not assume that the integer will be only positive. You may be given nega
 =end
 
 # Test if number is prime
-def is_prime(num)
-  
+
+# Out of box solution
+require 'prime'
+
+def is_prime?(num)
+  num.prime?
 end
+
+# Creative solution
